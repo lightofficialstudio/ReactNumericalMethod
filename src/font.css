@@ -1,0 +1,22 @@
+@font-face {
+    font-family: 'fc_minimalregular';
+    src: url('font/fc_minimal_regular-webfont.woff2') format('woff2'),
+         url('font/fc_minimal_regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'fc_minimalbold';
+    src: url('font/fc_minimal_bold-webfont.woff2') format('woff2'),
+         url('font/fc_minimal_bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    font-family:'fc_minimalregular',sans-serif;
+}
+
+div {
+        font-family:'fc_minimalregular',sans-serif;
+        font-size: large;
+    }
