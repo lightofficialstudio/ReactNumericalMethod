@@ -1,31 +1,69 @@
-import logo from './logo.svg';
-import './App.css';
-import './bootstrap.min.css';
-import './font.css';
+import React from "react"
+import Head from "./Head.js"
+import ChooseMenu from "./ChooseMenu.js"
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "./style.css"
+import "./font.css"
+import { Collapse } from "react-bootstrap";
 
-function App() {T
-  return (
-    <div className="App">
-      <nav class="site-header py-1 container d-flex flex-column flex-md-row justify-content-between">
-                <a href="index.html" class="py-3" d-none d-md-inline-block>หน้าหลัก</a>
-                <a href="portfolio.html" class="py-3" d-none d-md-inline-block>PORTFOLIO</a>
-                <a href="#" class="py-3" d-none d-md-inline-block>WORK</a>
-                <a href="#" class="py-3" d-none d-md-inline-block>CONTACT</a>
-            </nav>
-      <header className="App-header">
-          <h2 class="text-white">React VS. Numerical Method</h2>
-          <p class="text-white">รีแอค นิวเมอร์</p>
-      </header>
-      <body>
-        <div class="bg-dark">
+
+class App extends React.Component {
+  constructor(props){
+    super(props)
+    this.state={
+      homemenustart:false,
+      homemenu:false,
+      wait:""
+    }
+  }
+  sethomemenu(event){
+    this.setState({wait:500})
+    this.setState({homemenu:event}) 
+    this.space(event);
+  }
+  space(event){
+    if(event){
+      setTimeout(function() {
+        this.setState({homemenustart:event})
+      }.bind(this), 200);  
+    }    
+  }
+  
+  render() {
+    return (
+      <body >
+        <div className="APPbackground">
+          <Head/>    
+          <Collapse  in={this.state.homemenu}>
+            <div><ChooseMenu/></div>
+          </Collapse>        
+          <Collapse  in={!this.state.homemenustart}>
+            <card>
+            <div className="center APPtexthead APPtexthead2"><div className="APPtexthead1">
+                <b>NUMERICAL METHOD</b>
+                </div>
+                <div className="center APPtexthead2">
+                <p>นิวเมอร์ นรกที่คุณสร้างสรรค์เอง</p>
+                </div>
+                <br/><div>
+                </div>
+            </div>
+            <div className="center"/>
+              <button 
+              onClick={()=>this.sethomemenu(!this.state.homemenustart)}
+              className="btn btn-lg btn-light menustartcss" 
+              ><b>เริ่มใช้สูตรโกง</b>
+            </button>
+            <div className="homemenubottom"/>
+            </card>
+          </Collapse >
         </div>
+        <footer className="footer center">
+          <div>Official Statement : <a href="https://www.facebook.com/GuilKung/" target="_self">LightOfficialStudio</a></div >
+        </footer>
       </body>
-      <footer>
-        <p></p>
-      </footer>
-    </div>
-   
-  );
+    )
+  }
 }
 
 export default App;
